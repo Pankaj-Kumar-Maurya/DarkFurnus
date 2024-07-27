@@ -1,0 +1,208 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: gray;
+    box-sizing: border-box;
+}
+
+#navbar {
+    margin: 0 auto;
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainLogo {
+    display: flex;
+    align-items: center;
+}
+
+    .mainLogo img {
+        width: 40px;
+        cursor: pointer;
+    }
+
+#navMenu ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    width: 500px;
+}
+
+    #navMenu ul li {
+        cursor: pointer;
+        font-size: small;
+        font-weight: bold;
+    }
+
+.cartLogo img {
+    cursor: pointer;
+    width: 20px;
+}
+
+#mainHeader {
+    display: flex;
+    justify-content: flex-end;
+    color: black;
+    position: relative;
+}
+
+    #mainHeader #right img {
+        width: 1014px;
+        height: 1016px;
+    }
+
+    #mainHeader #left {
+        position: absolute;
+        left: 10%;
+        top: 10%
+    }
+
+.bigText {
+    /* background-color: aqua; */
+    margin-bottom: 3%;
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.gredient-text {
+    color: skyblue;
+}
+
+#mainHeader #achivData {
+    margin-top: 8%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+    #mainHeader #achivData div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        #mainHeader #achivData div h4 {
+            font-weight: 700;
+            /* margin: 0; Universal margin and padding also applyed here thats why i commented it.
+    padding: 0; */
+        }
+
+#mainHeader #left #button {
+    margin-top: 2%;
+    display: flex;
+    color: white;
+}
+
+.btn {
+    transform: skewX(-20deg);
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: 1px solid skyblue;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.btn1 {
+    background: skyblue;
+    background: linear-gradient(-45deg, rgb(232, 110, 10) 6%, black 28%, skyblue 97%);
+}
+
+#band {
+    width: 100%;
+    background: #ffffff40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 100px;
+    margin: auto;
+    box-shadow: 0 80px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    transform: rotate(-3deg);
+    border: 1px solid #ffffff40;
+}
+
+    #band img {
+        width: 20px;
+        height: 20px;
+    }
+
+#middleText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4%;
+    text-align: center;
+    padding: 0;
+}
+
+.mdImages {
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .mdImages .sideImg {
+        margin-top: 5%;
+        width: 350px;
+        height: 200px;
+    }
+
+    .mdImages .centerImg {
+        width: 500px;
+    }
+
+.centerbutton {
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.discover-section {
+    width: 70%;
+    margin: 100px auto;
+}
+
+.discover-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid skyblue;
+    border-radius: 10px;
+    background-color: #ffffff40;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 32px 0 rgb(78, 76, 76);
+}
+
+    .discover-card img {
+        margin-top: -70px;
+        width: 50%;
+        align-self: self-start;
+    }
+
+.bigTextDiscover {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.smallTextDiscover {
+    font-weight: 100;
+    font-size: smaller;
+}
+
+.discover-card-details-btn {
+    margin-top: 20px;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 10px 20px;
+    transform: skewX(-20deg);
+}
