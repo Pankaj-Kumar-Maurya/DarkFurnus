@@ -1,0 +1,196 @@
+﻿
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../assets/registration-bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+   
+}
+
+.main {
+    overflow:hidden;
+    margin-top:20px;
+    background: rgba(255, 255, 255,0.3);
+    backdrop-filter: blur(6px);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 60%;
+    margin-right: 20px;
+    /*display: flex;
+    align-items: center;*/
+}
+
+    .main h2 {
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        color: #4caf50;
+       
+    }
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+#form-containt {
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#right{
+    width:30%;
+}
+
+#left {
+    width: 30%;
+}
+
+.radio-button {
+    margin-bottom: 15px;
+    padding: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Aligns radio buttons with labels vertically */
+}
+
+    .radio-button input {
+        margin-right: 10px; /* Adds space between the label and the next radio button */
+    }
+
+    .radio-button label {
+        padding-top: 5px;
+    }
+
+.hobbies {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+
+select {
+    background: rgba(255, 255, 255,0.1);
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+
+button[type="submit"] {
+    margin-left:25%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    font-size: 16px;
+}
+#termAndCondition{
+    margin-top:10px;
+    margin-bottom:5px;
+    margin-left:25%;
+    display:flex;
+}
+/* For Show Password Icon */
+.toggle-password {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+    .toggle-password:hover {
+        color: #333;
+    }
+
+.password-container {
+    position: relative;
+    /*display: inline-block;
+    margin-bottom: 15px;*/
+}
+
+/*#profileimg {
+   
+    width:100%;
+    padding: 5px;
+   
+    align-items:center;
+    justify-content:space-evenly;
+}
+
+#preview{
+    margin-bottom:5px;
+    height:150px;
+    width:120px;
+    border:2px solid #aff980;
+}
+
+#photo {
+   
+    width: 100%;
+}
+*/
+
+
+.button-33 {
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+    .button-33:hover {
+        box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+        transform: scale(1.05) rotate(-1deg);
+    }
+
+#bottomLink{
+    display:flex;
+    justify-content:space-between;
+}
+

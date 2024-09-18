@@ -34,7 +34,7 @@ body {
     width: 500px;
 }
 
-    #navMenu ul li {
+    #navMenu ul li{
         cursor: pointer;
         font-size: small;
         font-weight: bold;
@@ -206,3 +206,5 @@ body {
     padding: 10px 20px;
     transform: skewX(-20deg);
 }
+
+
