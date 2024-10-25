@@ -1,0 +1,77 @@
+﻿@* @if (TempData["ToastrMessage"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["ToastrMessage"]');
+    </script>
+} *@
+
+@if (TempData["ToastrMessage"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        // Define options for toastr like position and custom styling
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right", // Change position as needed
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        
+        // Check for different types of TempData values and show appropriate toastr
+        @if (TempData["ToastrType"] != null)
+        {
+            switch (TempData["ToastrType"].ToString().ToLower())
+            {
+                case "success":
+                    <text>
+                            toastr.success('@TempData["ToastrMessage"]');
+                    </text>
+                    ;
+                    break;
+                case "error":
+                    <text>
+                                toastr.error('@TempData["ToastrMessage"]');
+                    </text>
+                    ;
+                    break;
+                case "warning":
+                    <text>
+                                    toastr.warning('@TempData["ToastrMessage"]');
+                    </text>
+                    ;
+                    break;
+                case "info":
+                    <text>
+                                        toastr.info('@TempData["ToastrMessage"]');
+                    </text>
+                    ;
+                    break;
+                default:
+                    <text>
+                                            toastr.info('@TempData["ToastrMessage"]');
+                    </text>
+                    ;
+                    break;
+            }
+        }
+        else
+        {
+            // Default to info if no type is provided
+            <text>
+
+            toastr.info('@TempData["ToastrMessage"]');
+            </text>
+        }
+    </script>
+}

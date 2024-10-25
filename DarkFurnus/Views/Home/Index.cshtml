@@ -11,9 +11,21 @@
     <title>Home</title>
     <link rel="stylesheet" href="~/css/HomePageStyleSheet.css">
 
+    @* for toaster message *@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <style>
+        #navMenu a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 
 <body>
+    @await Html.PartialAsync("_Notification")
     <header>
         <!-- nav bar here -->
         <nav id="navbar">
@@ -26,12 +38,8 @@
                     <li>Games</li>
                     <li>Goodies</li>
                     <li>About</li>
-                    <a href="https://localhost:7019/login/loginview">
-                    <li>Login</li>
-                    </a>
-                    <a href="https://localhost:7019/userregistration/registrationview">
-                    <li>Registration</li>
-                    </a>
+                    <li><a href="https://localhost:7019/login/loginview">Login</a></li>
+                    <li><a href="https://localhost:7019/userregistration/registrationview">Registration</a></li>
                    
                 </ul>
             </div>

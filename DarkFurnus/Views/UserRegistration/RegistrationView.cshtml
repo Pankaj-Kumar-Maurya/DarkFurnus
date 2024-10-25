@@ -1,28 +1,29 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0" />
     <title>Registration Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css">
     <link rel="stylesheet" href="~/css/RegistrationViewStyleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+   
 </head>
 
 <body>
+    @await Html.PartialAsync("_Notification")
     <div class="main">
         <h2>Registration Form</h2>
-        <form action="">
+        <form action="/UserRegistration/NewRegistration" method="post" id="registrationForm" onsubmit="return validationMyForm();">
             <div id="form-containt">
-
-
                 <div id="left">
-
-                    <label for="first">Full Name:</label>
+                    <label for="fullName">Full Name:</label>
                     <input type="text"
-                           id="name"
-                           name="name"
+                           id="fullName"
+                           name="fullName"
                            required />
-
                     <label for="dob">Date of Birth:</label>
                     <input type="date"
                            id="dob"
@@ -30,40 +31,31 @@
                            max="<?php echo date('Y-m-d'); ?>"
                            title="Please enter a valid date of birth."
                            required />
-
-
-
-                   
-
-                    <label for="gender">Country:</label>
+                    <label for="countryId">Country:</label>
                     <select id="country"
-                            name="country"
+                            name="countryId"
                             required>
-                        <option value="select">
+                        <option value="0">
                             Select
                         </option>
-                        <option value="india">
+                        <option value="1">
                             India
                         </option>
-                        <option value="russia">
+                        <option value="2">
                             Russia
                         </option>
-                        <option value="japan">
+                        <option value="3">
                             Japan
                         </option>
-                    </select>                   
-
-                  
-                   
-
+                    </select>
 
                 </div>
                 <div id="right">
                     @* <label for="profile-img">Profile Image:</label>
                     <div id="profileimg">
-                        <div id ="preview"></div>
-                        
-                                <input type="file" id="photo" accept="image/*" />
+                    <div id ="preview"></div>
+
+                    <input type="file" id="photo" accept="image/*" />
                     </div> *@
 
                     <label for="email">Email:</label>
@@ -84,42 +76,43 @@
                     </div>
 
                     <div class="password-container">
-                        <label for="repassword">Re-type Password:</label>
+                        <label for="repassword">Confirm Password:</label>
                         <input type="password"
                                id="repassword"
                                name="repassword"
                                required />
                         <span class="toggle-password" onclick="togglePassword('repassword')">👁️</span>
-                    </div>                 
+                    </div>
 
 
                 </div>
             </div>
             <div id="termAndCondition">
 
-            <input type="checkbox" name="terms" id="terms" required />
-            <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                <input type="checkbox" name="terms" id="terms" required />
+                <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
             </div>
 
             <button type="submit">
                 Submit
             </button>
         </form>
-        <div id="bottomLink"> 
+        <div id="bottomLink">
 
-        <a href="https://localhost:7019/home/index">
-            <button class="button-33" role="button">Home</button>
-        </a>
+            <a href="https://localhost:7019/home/index">
+                <button class="button-33" role="button">Home</button>
+            </a>
             <a href="https://localhost:7019/login/loginview">
                 <button class="button-33" role="button">Login</button>
             </a>
         </div>
-
-
     </div>
-    
+   
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script>
+    <script type="text/javascript">
+
         function togglePassword(fieldId) {
             var passwordField = document.getElementById(fieldId);
             var toggleButton = passwordField.nextElementSibling;
@@ -134,25 +127,41 @@
             }
         }
 
-
-        $pic = $('<img id = "image" width = "100%" height = "100%"/>');
-        $("#photo").change(function () {
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) {
-                $("#image").remove();
-                $lbl.appendTo("#preview");
+        function validationMyForm() {
+            const password = document.querySelector("#password").value;
+            const repassword = document.querySelector("#repassword").value;
+            const countrySelect = document.getElementById("country");
+            if (password !== repassword) {
+                alert("Confirm password does not match.");
+                return false;
             }
-            if (/^image/.test(files[0].type)) {
-                var reader = new FileReader();
-                reader.readAsDataURL(files[0]);
-                reader.onloadend = function () {
-                    $pic.appendTo("#preview");
-                    $("#image").attr("src", this.result);
-                }
+            if (countrySelect.value === "0") {
+                alert("Please select a country.");
+                return false;
             }
-        });
+            return true;
+        }
 
+        // console.log(password.val)
+        // console.log(repassword.val)
+        //Image preview
+
+        // $pic = $('<img id = "image" width = "100%" height = "100%"/>');
+        // $("#photo").change(function () {
+        //     var files = !!this.files ? this.files : [];
+        //     if (!files.length || !window.FileReader) {
+        //         $("#image").remove();
+        //         $lbl.appendTo("#preview");
+        //     }
+        //     if (/^image/.test(files[0].type)) {
+        //         var reader = new FileReader();
+        //         reader.readAsDataURL(files[0]);
+        //         reader.onloadend = function () {
+        //             $pic.appendTo("#preview");
+        //             $("#image").attr("src", this.result);
+        //         }
+        //     }
+        // });
     </script>
-
 </body>
 </html>

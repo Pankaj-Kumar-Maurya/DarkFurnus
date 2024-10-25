@@ -15,6 +15,11 @@ namespace DarkFurnus.Controllers
 
         public IActionResult Index()
         {
+            if(TempData["Registration"] != null && TempData["Registration"].ToString() == "Done")
+            {
+                TempData["ToastrMessage"] = "Registration Successful";
+                TempData["ToastrType"] = "success";
+            }
             return View();
         }
 

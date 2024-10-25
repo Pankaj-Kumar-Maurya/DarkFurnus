@@ -39,11 +39,12 @@ body {
         font-size: small;
         font-weight: bold;
     }
+       
 
-.cartLogo img {
-    cursor: pointer;
-    width: 20px;
-}
+        .cartLogo img {
+            cursor: pointer;
+            width: 20px;
+        }
 
 #mainHeader {
     display: flex;
