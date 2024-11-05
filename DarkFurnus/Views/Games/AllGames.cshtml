@@ -1,0 +1,268 @@
+﻿@model List<GameList>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*   background-color: #16181c; */
+            background-color: gray;
+            font-family: Arial, sans-serif;
+        }
+
+        h5 {
+           
+            color: black;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .Main-div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .Data-card {
+            margin: 10px;
+            width: 360px;
+            height: 200px;
+            position: relative;
+            transition: transform 0.6s;
+            border: 1px solid black;
+        }
+
+            .Data-card:hover {
+                transform: scale(.90); /* Slightly scales the card */
+            }
+
+            .Data-card img {
+                width: 100%;
+                height: 100%;
+                transition: transform 0.3s; /* Smooth scaling effect */
+            }
+
+            .Data-card:hover img {
+                transform: scale(1.1); /* Scales up the image on hover */
+                filter: blur(1px) brightness(0.3); /* Blur and darken the image on hover */
+            }
+
+            .Data-card h4 {
+                display: none;
+                position: absolute;
+                color: white;
+                font-size: 18px;
+            }
+
+            .Data-card label {
+                display: none;
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+                color: white;
+                font-size: 18px;
+            }
+
+            .Data-card a {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 20px;
+                text-decoration: none;
+            }
+
+            .Data-card:hover a {
+                z-index: 1;
+                display: block; /* Show title on hover */
+            }
+
+            .Data-card:hover label {
+                z-index: 1;
+                display: block; /* Show title on hover */
+            }
+
+            .Data-card:hover h4, label {
+                z-index: 1;
+                display: block; /* Show title on hover */
+            }
+
+        #navMenu ul {
+           
+            margin: 0 auto;
+            width: 80%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            list-style:none;
+        }
+
+        #navMenu a{
+            text-decoration:none;
+            color:black;
+        }
+
+
+        
+        
+         
+    </style>
+</head>
+<body>
+    <div id="navMenu">
+        <ul>
+            <li><a href="https://localhost:7019/home/index">Home</a></li>
+            <li>Accessories</li>
+            @* <li>About</li>
+            <li><a href="https://localhost:7019/login/loginview">Login</a></li>
+            <li><a href="https://localhost:7019/userregistration/registrationview">Registration</a></li> *@
+
+        </ul>
+        <h5>We Have @Model.Count Games</h5>
+    </div>
+    @if (Model != null && Model.Any())
+    {
+        <div class="Main-div">
+            @foreach (var game in Model)
+            {
+                <div class="Data-card">
+                    <h4>@game.Title</h4>
+                    <label>@game.Platform</label>
+                    <a href="@game.Game_url" target="_blank">Play</a>
+
+                    <img src="@game.Thumbnail" alt="Game Thumbnail" />
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p style="color: #8f9ca7; text-align: center;">Please Turn On Your Internet Connection</p>
+    }
+</body>
+</html>
+
+@* <style>
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        div[style*="flex: 1 1 30%;"] {
+            flex: 1 1 45%; /* Two cards per row on smaller screens */
+            max-width: 45%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        div[style*="flex: 1 1 30%;"] {
+            flex: 1 1 100%; /* One card per row on very small screens */
+            max-width: 100%;
+        }
+    }
+</style> *@
+
+
+
+@* @model GameList
+
+<h1>User Data</h1>
+@if (Model != null && Model.Results != null)
+{
+    foreach (var user in Model.Results)
+    {
+        <div>
+            <h2>@user.Name.First @user.Name.Last</h2>
+            <p>Email: @user.Email</p>
+            <p>Location: @user.Location.City, @user.Location.Country</p>
+            <img src="@user.Picture.Large" alt="User Image" />
+        </div>
+    }
+}
+else
+{
+    <p>No data found.</p>
+}
+ *@
+
+@*  @using System.Text.Json
+@model JsonElement
+
+<h1>User Data</h1>
+@if (Model.TryGetProperty("results", out JsonElement users) && users.ValueKind == JsonValueKind.Array)
+{
+    foreach (var user in users.EnumerateArray())
+    {
+        var name = user.GetProperty("name");
+        var location = user.GetProperty("location");
+        var picture = user.GetProperty("picture");
+
+        <div>
+            <h2>@name.GetProperty("first").GetString() @name.GetProperty("last").GetString()</h2>
+            <p>Email: @user.GetProperty("email").GetString()</p>
+            <p>Location: @location.GetProperty("city").GetString(), @location.GetProperty("country").GetString()</p>
+            <img src="@picture.GetProperty("large").GetString()" alt="User Image" />
+        </div>
+    }
+}
+else
+{
+    <p>No data found.</p>
+} *@
+
+
+@*  3rd way controller code , using jsonDocument working with both below code use any one of them *@
+
+
+@* @model List<Dictionary<string, object>>
+
+<h1>User Data</h1>
+@if (Model.Any())
+{
+    foreach (var user in Model)
+    {
+        var name = user["name"] as Dictionary<string, object>;
+        var location = user["location"] as Dictionary<string, object>;
+        var picture = user["picture"] as Dictionary<string, object>;
+
+        <div>
+            <h2>@name["first"] @name["last"]</h2>
+            <p>Email: @user["email"]</p>
+            <p>Location: @location["city"], @location["country"]</p>
+            <img src="@picture["large"]" alt="User Image" />
+        </div>
+    }
+}
+else
+{
+    <p>No data found.</p>
+}
+ *@
+
+@*  @model List<Dictionary<string, object>>
+
+<h1>User Data</h1>
+@if (Model.Any())
+{
+    foreach (var user in Model)
+    {
+        var name = user["name"] as Dictionary<string, object>;
+        var location = user["location"] as Dictionary<string, object>;
+        var picture = user["picture"] as Dictionary<string, object>;
+
+        <div>
+            <h2>@(name.ContainsKey("first") ? name["first"] : "N/A") @(name.ContainsKey("last") ? name["last"] : "N/A")</h2>
+            <p>Email: @user["email"]</p>
+            <p>Location: @(location.ContainsKey("city") ? location["city"] : "Unknown City"), @(location.ContainsKey("country") ? location["country"] : "Unknown Country")</p>
+            <img src="@(picture.ContainsKey("large") ? picture["large"] : "default.jpg")" alt="User Image" />
+        </div>
+    }
+}
+else
+{
+    <p>No data found.</p>
+} *@
